@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, Fragment } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Modals from './Components/modals';
+import Header from './Components/header';
+import Pages from './Components/pages';
+import Footer from './Components/footer';
+
+
+import './resources/css/gacha-style.css';
+
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      route : 'home',
+      activeTab : 'home',
+      view : "info",
+    }
+  }
+
+  onRoute = (route) => {
+    this.setState({ route : route, activeTab : route });
+  }
+
+  setView = (pick) => {
+    this.setState({view : pick});
+  }
+
+  render(){
+    return(
+      <Fragment>
+            <Header
+              onRoute = {this.onRoute}
+              activeTab = {this.state.activeTab}
+            />
+            <Modals
+              onRoute = {this.onRoute}
+            />
+            <Pages
+              onRoute = {this.onRoute}
+              setView = {this.setView}
+              activeView = {this.state.view}
+              activeTab = {this.state.activeTab}        
+            />
+            <Footer/>
+      </Fragment>
+    );
+  }
+
 }
-
 export default App;
+
+

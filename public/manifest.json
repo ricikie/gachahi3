@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Gacha app",
+  "name": ">Honkai Impact 3 Gacha Simulator",
   "icons": [
     {
       "src": "favicon.ico",
